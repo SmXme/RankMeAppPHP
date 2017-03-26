@@ -1,0 +1,94 @@
+html {
+  
+  height:100%;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0px;
+  margin-bottom:0px;
+
+}
+body
+{
+	background-color:lightgray;
+	min-height:100%;
+	width: 1100px;
+	display: flex;
+	flex-direction: column; 
+	margin: 0px;
+  
+}
+
+header{
+  background-color: brown;
+  height:150px;
+  width:1100px;
+  padding:0px;
+  margin:0px;
+}
+nav{
+	background-color:red;
+	height:130px;
+	width:1100px;
+	padding:0px;
+	margin:0px;
+}
+
+#divStatsGlobales{
+  background-color: darkgreen;
+  display:block;
+  height:150px;
+  width:1100px;
+  padding:0px;
+  margin:0px;
+}
+#divClassement{
+  background-color: mediumvioletred;
+  /*height:390px;*/
+  width:1100px;
+  padding:0px;
+  margin:0px;
+  
+}
+footer{
+  background-color: slategrey;
+  height:80px;
+  width:1100px;
+  padding:0px;
+  margin:0px;
+}
+/* CLASS */
+.divContainer
+{
+	flex: 1;
+	justify-content:flex-start;
+}
+.divRS{
+  background-color: lawngreen;
+  padding:0px;
+  margin:0px;
+  height:20px;
+}
+.divLogo{
+  background-color: cadetblue;
+  height:130px;
+  width:130px;
+  padding:0px;
+  margin:0px;
+}
+.divMenu{
+	background-color:brown;
+	height:130px;
+	width:1100px;
+	padding:0px;
+	margin:0px;
+	align-self:flex-end;
+}
+
+.divSql{
+}
+
+.textcenter{
+  text-align:center;
+  color:white;
+}
