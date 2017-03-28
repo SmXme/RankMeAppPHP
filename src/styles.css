@@ -1,5 +1,5 @@
 html {
-  
+  background-color: #131523;
   height:100%;
   width: 1100px;
   margin-left: auto;
@@ -10,7 +10,6 @@ html {
 }
 body
 {
-	background-color:lightgray;
 	min-height:100%;
 	width: 1100px;
 	display: flex;
@@ -20,42 +19,76 @@ body
 }
 
 header{
-  background-color: brown;
-  height:150px;
   width:1100px;
   padding:0px;
-  margin:0px;
-}
-nav{
-	background-color:red;
-	height:130px;
-	width:1100px;
-	padding:0px;
-	margin:0px;
+  margin-top:10px;
 }
 
+nav{
+	height:100px;
+	width:1100px;
+	padding:0px;
+	margin-top:10px;
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items:center;
+}
+#logoNav{
+	width: 100px;
+}
 #divStatsGlobales{
-  background-color: darkgreen;
   display:block;
   height:150px;
   width:1100px;
-  padding:0px;
-  margin:0px;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-top:10px;
 }
 #divClassement{
-  background-color: mediumvioletred;
-  /*height:390px;*/
   width:1100px;
-  padding:0px;
-  margin:0px;
-  
+  margin-top:10px;
+  display:flex;
+  flex-flow: column wrap;
+}
+#divFormClassement{
+	width: 1060px;
+	height:60px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items:center;
+	justify-content:space-around;
+}
+#divClassement form{
+	padding-bottom: 10px;
+	padding-top:10px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items:center;
+	justify-content:space-around;
+	font-size:20px;
+}
+#divClassement form select{
+	font-family:nexa_light;
+	margin-left:10px;
+	height:20px;
+	background-color: #131523;
+	border-color:white;
+	color:white;
+}
+#divClassement form input{
+	font-family:nexa_light;
+	width:50px;
+	height:30px;
+	background-color: #131523;
+	border-color:white;
+	color:white;
 }
 footer{
-  background-color: slategrey;
-  height:80px;
+  height:170px;
   width:1100px;
   padding:0px;
-  margin:0px;
+  margin-top:20px;
 }
 /* CLASS */
 .divContainer
@@ -64,20 +97,23 @@ footer{
 	justify-content:flex-start;
 }
 .divRS{
-  background-color: lawngreen;
   padding:0px;
   margin:0px;
-  height:20px;
+  height:60px;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  
+
 }
 .divLogo{
-  background-color: cadetblue;
   height:130px;
   width:130px;
   padding:0px;
   margin:0px;
 }
 .divMenu{
-	background-color:brown;
 	height:130px;
 	width:1100px;
 	padding:0px;
@@ -86,9 +122,121 @@ footer{
 }
 
 .divSql{
+	width:1060px;
+	height:40px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:rgba(71, 70, 70, 0.4) ;
+	display:flex;
+	flex-flow:row wrap;
+	justify-content:space-around;
+	align-items:center;
+}
+.divSql:hover{
+	background-color:rgba(255, 255, 255, 0.4) ;
+}
+.divSepareSql{
+	width:1060px;
+	height:10px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: #0d1219;
+}
+.linkClassement{
+	text-decoration:none;
+	font-size:25px;
+	
 }
 
+.divIconSocial{
+	background-color: #131523;
+	width:45px;
+	height:45px;
+	border: 1px solid lightgrey;
+}
+.imgRS{
+	width:35px;
+	padding-top:5px;
+}
 .textcenter{
-  text-align:center;
-  color:white;
+	font-family: "nexa_light";
+	text-align:center;
+	color:white;
+}
+.block{
+	background-color: #0d1219;
+}
+.navLink{
+	font-size: 30px;
+	color: white;
+	text-decoration:none;
+}
+.textNav{
+	width:auto;
+	height:100px;
+	display:flex;
+	flex-flow:row wrap;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+.textNav:hover{
+	background-color:white;
+	color:#131523;
+}
+.divFormRegister{
+	font-size:20px;
+	width: 1100px;
+	height:60px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items:center;
+	justify-content:space-around;
+}
+.divRegister form{
+	display: flex;
+	flex-flow: column wrap;
+	align-items:center;
+	justify-content:space-around;
+}
+.divRegister label{
+	width: 300px;
+	height: 40px;
+}
+.divRegister input{
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	font-family: nexa_light;
+	background-color: #131523;
+	border-color:white;
+	color:white;
+}
+.divInfoPlayer{
+	width: 1100px;
+	height:400px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+/* FONTS */
+@font-face {
+    font-family: 'nexa_bold';
+    src: url('fonts/nexa_bold-webfont.woff2') format('woff2'),
+         url('fonts/nexa_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'nexa_light';
+    src: url('fonts/nexa_light-webfont.woff2') format('woff2'),
+         url('fonts/nexa_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }

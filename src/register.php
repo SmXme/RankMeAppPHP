@@ -62,65 +62,48 @@
 </head>
 <body>
   <div class="divContainer">
-	<header>
-		<div class="textcenter divRS">
-			Réseaux Sociaux
+<header>
+		<div class="textcenter block divRS">
+			<a href="https://twitter.com/CSGO_FR" ><div class="divIconSocial"><img class ="imgRS" src="images/logotwitter100.png" alt="Logo Twitter"></div></a>
+			<a href="https://www.facebook.com/groups/CSGOFRANCE/" ><div class="divIconSocial"><img class ="imgRS" src="images/logofacebook100.png" alt="Logo Facebook"></div></a>
+			<a href="http://steamcommunity.com/gid/103582791437214772" ><div class="divIconSocial"><img class ="imgRS" src="images/logosteam100.png" alt="Logo Steam"></div></a>
+			<a href="https://www.youtube.fr" ><div class="divIconSocial"><img class ="imgRS" src="images/logoyoutube100.png" alt="Logo YouTube"></div></a>
 		</div>
-		<nav class="textcenter">
-			<div class="textcenter divMenu">
-				<div class="textcenter divLogo">
-					Logo
-				</div>
-			</div>
+		<nav class="block textcenter">
+			<a><div><img id="logoNav" src="images/logocsgofr.png" alt="Logo CSGOFR"></div></a>
+			<a class ="navLink" href="index.php"><div class="textNav">Accueil</div></a>
+			<a class ="navLink" href=""><div class="textNav">Serveurs</div></a>
+			<a class ="navLink" href=""><div class="textNav">Connexion</div></a>
+			<a class ="navLink" href="register.php"><div class="textNav">Inscription</div></a>
         </nav>
     </header>
-	<div class="divRegister textcenter">
+	<div class="divRegister block textcenter">
 		<h2>Inscription</h2>
 		<br /><br /><br />
 		<form method="POST" action="">
-			<table>
-				<tr>
-					<td align="right">
-						<label for="inputLogin">Login: </label>
-					</td>
-					<td>
-						<input type="text" placeholder="Login" id="inputLogin" name="inputLogin" value="<?php if(isset($safeLogin)){ echo $safeLogin;}?>" />
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label for="inputPassword1">Password: </label>
-					</td>
-					<td>
-						<input type="password" placeholder="Password" id="inputPassword1" name="inputPassword1" />
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label for="inputPassword2">Password Confirmation: </label>
-					</td>
-					<td>
-						<input type="password" placeholder="Password" id="inputPassword2" name="inputPassword2" />
-					</td>
-				</tr>				
-				<tr>
-					<td align="right">
-						<label for="inputMail1">Email: </label>
-					</td>				
-					<td>
-						<input type="email" placeholder="Mail1" id="inputMail1" name="inputMail1" value="<?php if(isset($safeMail1)){ echo $safeMail1;}?>"/>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label for="inputMail2">Email Confirmation: </label>
-					</td>				
-					<td>
-						<input type="email" placeholder="Mail2" id="inputMail2" name="inputMail2" value="<?php if(isset($safeMail2)){ echo $safeMail2;}?>"/>
-					</td>
-				</tr>			
-			</table>
-			<input type="submit" name ="submitRegister" value="Register"/>
+			<div class="divFormRegister">
+				<label for="inputLogin">Pseudo: </label>
+				<input type="text" placeholder="Login" id="inputLogin" name="inputLogin" value="<?php if(isset($safeLogin)){ echo $safeLogin;}?>" />		
+			</div>
+			<div class="divFormRegister">
+				<label for="inputPassword1">Mot de Passe: </label>				
+				<input type="password" placeholder="Password" id="inputPassword1" name="inputPassword1" />				
+			</div>
+			<div class="divFormRegister">
+				<label for="inputPassword2">Confirmation du Mot de Passe: </label>			
+				<input type="password" placeholder="Password" id="inputPassword2" name="inputPassword2" />
+			</div>
+			<div class="divFormRegister">
+				<label for="inputMail1">Email: </label>
+				<input type="email" placeholder="Mail1" id="inputMail1" name="inputMail1" value="<?php if(isset($safeMail1)){ echo $safeMail1;}?>"/>			
+			</div>
+			<div class="divFormRegister">
+				<label for="inputMail2">Confirmation de l'Email : </label>
+				<input type="email" placeholder="Mail2" id="inputMail2" name="inputMail2" value="<?php if(isset($safeMail2)){ echo $safeMail2;}?>"/>
+			</div>
+			<div class="divFormRegister">
+				<input type="submit" name ="submitRegister" value="S'enregister"/>
+			</div>
 		</form>
 		<?php
 		if (isset($errorRegister)){
@@ -129,7 +112,7 @@
 		?>
 	</div>
   </div>
-    <footer class="textcenter">
+    <footer class="block textcenter">
       Footer
     </footer >
 </body>
