@@ -1,16 +1,12 @@
-<!doctype html>
-
 <?php
-	try
-	{	
-		$bdd = new PDO('mysql:host=localhost;dbname=rankme_test;charset=utf8', 'root', '');
-	}
-	catch (Exception $e)
-	{
-		die('Erreur : ' . $e->getMessage());
-	}
+	session_start();
+?>
+<!doctype html>
+<?php
+    include 'dbconnect.php';
 	
 	if (isset($_POST['submitRegister'])){
+		echo "bonjour";
 		$safeLogin = htmlspecialchars($_POST['inputLogin']);
 		$safeMail1 = htmlspecialchars($_POST['inputMail1']);
 		$safeMail2 = htmlspecialchars($_POST['inputMail2']);
@@ -62,24 +58,11 @@
 </head>
 <body>
   <div class="divContainer">
-<header>
-		<div class="textcenter block divRS">
-			<a href="https://twitter.com/CSGO_FR" ><div class="divIconSocial"><img class ="imgRS" src="images/logotwitter100.png" alt="Logo Twitter"></div></a>
-			<a href="https://www.facebook.com/groups/CSGOFRANCE/" ><div class="divIconSocial"><img class ="imgRS" src="images/logofacebook100.png" alt="Logo Facebook"></div></a>
-			<a href="http://steamcommunity.com/gid/103582791437214772" ><div class="divIconSocial"><img class ="imgRS" src="images/logosteam100.png" alt="Logo Steam"></div></a>
-			<a href="https://www.youtube.fr" ><div class="divIconSocial"><img class ="imgRS" src="images/logoyoutube100.png" alt="Logo YouTube"></div></a>
-		</div>
-		<nav class="block textcenter">
-			<a><div><img id="logoNav" src="images/logocsgofr.png" alt="Logo CSGOFR"></div></a>
-			<a class ="navLink" href="index.php"><div class="textNav">Accueil</div></a>
-			<a class ="navLink" href=""><div class="textNav">Serveurs</div></a>
-			<a class ="navLink" href=""><div class="textNav">Connexion</div></a>
-			<a class ="navLink" href="register.php"><div class="textNav">Inscription</div></a>
-        </nav>
-    </header>
+      <?php
+        include 'header.php';
+      ?>
 	<div class="divRegister block textcenter">
-		<h2>Inscription</h2>
-		<br /><br /><br />
+		<h1>Inscription</h1>
 		<form method="POST" action="">
 			<div class="divFormRegister">
 				<label for="inputLogin">Pseudo: </label>
@@ -102,7 +85,7 @@
 				<input type="email" placeholder="Mail2" id="inputMail2" name="inputMail2" value="<?php if(isset($safeMail2)){ echo $safeMail2;}?>"/>
 			</div>
 			<div class="divFormRegister">
-				<input type="submit" name ="submitRegister" value="S'enregister"/>
+				<input type="submit" name ="submitRegister" value="S'enregistrer"/>
 			</div>
 		</form>
 		<?php
@@ -112,8 +95,8 @@
 		?>
 	</div>
   </div>
-    <footer class="block textcenter">
-      Footer
-    </footer >
+  <?php
+     include 'footer.php';
+  ?>
 </body>
 </html>

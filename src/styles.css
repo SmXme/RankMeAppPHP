@@ -6,18 +6,14 @@ html {
   margin-right: auto;
   margin-top:0px;
   margin-bottom:0px;
-
 }
-body
-{
+body{
 	min-height:100%;
 	width: 1100px;
 	display: flex;
 	flex-direction: column; 
 	margin: 0px;
-  
 }
-
 header{
   width:1100px;
   padding:0px;
@@ -150,12 +146,12 @@ footer{
 
 .divIconSocial{
 	background-color: #131523;
-	width:45px;
-	height:45px;
+	width:30px;
+	height:30px;
 	border: 1px solid lightgrey;
 }
 .imgRS{
-	width:35px;
+	width:20px;
 	padding-top:5px;
 }
 .textcenter{
@@ -167,12 +163,15 @@ footer{
 	background-color: #0d1219;
 }
 .navLink{
-	font-size: 30px;
+	font-size: 20px;
 	color: white;
 	text-decoration:none;
+	width:130px;
 }
 .textNav{
 	width:auto;
+	width:auto;
+	color:white;
 	height:100px;
 	display:flex;
 	flex-flow:row wrap;
@@ -181,8 +180,8 @@ footer{
 	
 }
 .textNav:hover{
-	background-color:white;
-	color:#131523;
+	background-color:rgba(255, 255, 255, 0.4) ;
+
 }
 .divFormRegister{
 	font-size:20px;
@@ -193,6 +192,12 @@ footer{
 	align-items:center;
 	justify-content:space-around;
 }
+.divRegister{
+	display:flex;
+	width:1100px;
+	margin-top: 10px;
+	flex-flow: column wrap;
+}
 .divRegister form{
 	display: flex;
 	flex-flow: column wrap;
@@ -201,11 +206,10 @@ footer{
 }
 .divRegister label{
 	width: 300px;
-	height: 40px;
+	text-align:right;	
 }
 .divRegister input{
 	width: 300px;
-	height: 40px;
 	text-align: center;
 	font-size: 20px;
 	font-family: nexa_light;
@@ -213,10 +217,92 @@ footer{
 	border-color:white;
 	color:white;
 }
+.divLogin{
+	display:flex;
+	width:1100px;
+	margin-top: 10px;
+	flex-flow: column wrap;
+}
+.divFormLogin{
+	font-size:20px;
+	width: 1100px;
+	height:60px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items:center;
+	justify-content:space-around;
+}
+.divLogin input{
+	width: 300px;
+	text-align: center;
+	font-size: 20px;
+	font-family: nexa_light;
+	background-color: #131523;
+	border-color:white;
+	color:white;
+}
+.divLogin label{
+	text-align:right;
+	width: 300px;
+}
+#cbLogin{
+	width:20px;
+}
 .divInfoPlayer{
 	width: 1100px;
+	margin-top:10px;
+	margin-bottom:0px;
+	display:flex;
+	flex-flow: row wrap;
+	justify-content:space-around;
+	align-items:space-around;
+}
+.divInfoPlayer p{
+	margin:0px;
+	padding:0px;
+}
+
+.divInfoPlayer2{
+	width:300px;
+	display:flex;
+	flex-flow:column wrap;
+	justify-content:space-around;
+	align-items:space-around;
+	
+}
+.divInfoPlayerGeneral{
+	margin-top:40px;
+	margin-bottom:40px;
+	width:1100px;
+	display:flex;
+	justify-content:space-around;
+	align-items:space-around;
+}
+.divInfoPlayerScore{
+	margin-top:40px;
+	margin-bottom:40px;
+	width:1100px;	
+	display:flex;
+	justify-content:space-around;
+	align-items:space-around;
+}
+.divInfoPlayerTirs{
+	margin-top:40px;
+	margin-bottom:40px;
+	width:1100px;
+	display:flex;
+	justify-content:space-around;
+	align-items:space-around;
+}
+
+.pTitle{
+	font-family : nexa_bold;
+	font-size : 1.1em;
+}
+.divMyAccount{
+	width: 1100px;
 	height:400px;
-	margin-top:0px;
+	margin-top:10px;
 	margin-bottom:0px;
 }
 /* FONTS */

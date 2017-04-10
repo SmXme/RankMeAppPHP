@@ -1,7 +1,8 @@
-<!doctype html>
 <?php
+	session_start();
 	$_SESSION['idPlayer']=$_GET['id'];
 ?>
+<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -13,42 +14,137 @@
 </head>
 <body>
   <div class="divContainer">
-	<header>
-		<div class="textcenter block divRS">
-			<a href="https://twitter.com/CSGO_FR" ><div class="divIconSocial"><img class ="imgRS" src="images/logotwitter100.png" alt="Logo Twitter"></div></a>
-			<a href="https://www.facebook.com/groups/CSGOFRANCE/" ><div class="divIconSocial"><img class ="imgRS" src="images/logofacebook100.png" alt="Logo Facebook"></div></a>
-			<a href="http://steamcommunity.com/gid/103582791437214772" ><div class="divIconSocial"><img class ="imgRS" src="images/logosteam100.png" alt="Logo Steam"></div></a>
-			<a href="https://www.youtube.fr" ><div class="divIconSocial"><img class ="imgRS" src="images/logoyoutube100.png" alt="Logo YouTube"></div></a>
-		</div>
-		<nav class="block textcenter">
-			<a><div><img id="logoNav" src="images/logocsgofr.png" alt="Logo CSGOFR"></div></a>
-			<a class ="navLink" href="index.php"><div class="textNav">Accueil</div></a>
-			<a class ="navLink" href=""><div class="textNav">Serveurs</div></a>
-			<a class ="navLink" href=""><div class="textNav">Connexion</div></a>
-			<a class ="navLink" href="register.php"><div class="textNav">Inscription</div></a>
-        </nav>
-    </header>
+      <?php
+        include 'header.php';
+      ?>
 	<div class="divInfoPlayer textcenter block">
-			<?php 
-			try
-					{
-						$bdd = new PDO('mysql:host=localhost;dbname=rankme_test;charset=utf8', 'root', '');
-					}
-					catch (Exception $e)
-					{
-						die('Erreur : ' . $e->getMessage());
-					}
+		
+			<?php
+                include 'dbconnect.php';
 				$idPlayer = (int)$_SESSION['idPlayer'];
 				$rqPlayer = $bdd->query('SELECT * FROM rankme WHERE id='.$idPlayer.'');		
 				while($donnees = $rqPlayer -> fetch()){
-					echo('<div>'.$donnees['steam'].''.$donnees['lastip'].'</div>');
+					$namePlayer = $donnees['name'];
+					$steamPlayer = $donnees['steam'];
+					$scorePlayer = $donnees['score'];
+					$killsPlayer = $donnees['kills'];
+					$deathsPlayer = $donnees['deaths'];
+					$shotsPlayer = $donnees['shots'];
+					$hitsPlayer = $donnees['hits'];
+					$headshotsPlayer = $donnees['headshots'];
+					$connectedPlayer = $donnees['connected'];
+					$lastconnectPlayer = $donnees['lastconnect'];
+					$glockPlayer = $donnees['glock'];
+					$hkp2000Player = $donnees['hkp2000'];
+					$p250Player = $donnees['p250'];
+					$deaglePlayer = $donnees['deagle'];
+					$elitePlayer = $donnees['elite'];
+					$fivesevenPlayer = $donnees['fiveseven'];
+					$tec9Player = $donnees['tec9'];
+					$novaPlayer = $donnees['nova'];
+					$xm1014Player = $donnees['xm1014'];
+					$mag7Player = $donnees['mag7'];
+					$sawedoffPlayer = $donnees['sawedoff'];
+					$bizonPlayer = $donnees['bizon'];
+					$mac10Player = $donnees['mac10'];
+					$mp9Player = $donnees['mp9'];
+					$mp7Player = $donnees['mp7'];
+					$ump45Player = $donnees['ump45'];
+					$p90Player = $donnees['p90'];
+					$galilarPlayer = $donnees['galilar'];
+					$ak47layer = $donnees['ak47'];
+					$scar20Player = $donnees['scar20'];
+					$famasPlayer = $donnees['famas'];
+					$m4a1Player = $donnees['m4a1'];
+					$augPlayer = $donnees['aug'];
+					$ssg08Player = $donnees['ssg08'];
+					$ssg556Player = $donnees['sg556'];
+					$awpPlayer = $donnees['awp'];
+					$g3sg1Player = $donnees['g3sg1'];
+					$m249Player = $donnees['m249'];
+					$negevPlayer = $donnees['negev'];
 				}
 				$rqPlayer->closeCursor();						
+				
 			?>	
+			<h2>Informations et Performances de <?php echo $namePlayer ?></h2>
+		<div class="divInfoPlayerGeneral">	
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Pseudo</p>
+				<p><?php echo $namePlayer?></p>
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">SteamID</p>
+				<p><?php echo $steamPlayer ?></p>
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Temps passé sur le serveur</p>
+				<?php
+                    $hours = floor($connectedPlayer / 3600);
+                    $minutes = (($connectedPlayer/3600) - $hours)*60  ;
+                    $secondes =($minutes - floor($minutes))*60;
+                ?><p><?php echo $hours . ' h ' .floor($minutes). ' m ' . $secondes;?> </p>
+			</div>
+            <div class="divInfoPlayer2">
+                <p class="pTitle">Dernière visite sur le serveur</p>
+                <p><?php
+                echo date( 'd / m / Y', $lastconnectPlayer );
+                ?></p>
+            </div>
+		</div>			
+		<div class="divInfoPlayerScore">
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Kills</p>
+				<p><?php echo $killsPlayer?></p>
+			</div>		
+			
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Deaths</p>
+				<p><?php echo $deathsPlayer?></p>
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Ratio</p>
+				<p>
+                    <?php echo number_format(($killsPlayer/$deathsPlayer), 1, '.', ' '); ?>
+                </p>
+
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Score</p>
+				<p><?php echo $scorePlayer ?></p>
+			</div>
+		</div>
+		<div class="divInfoPlayerTirs">
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Shots</p>
+				<p><?php echo $shotsPlayer ?></p>
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Hits</p>
+				<p><?php echo $hitsPlayer ?></p>
+			</div>
+						
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Précision</p>
+				<p>
+                    <?php echo number_format(($hitsPlayer/$shotsPlayer)*100, 1, '.', ' ').'%';?>
+                </p>
+			</div>
+								
+			<div class="divInfoPlayer2">
+				<p class="pTitle">Headshots</p>
+				<p><?php echo $headshotsPlayer?></p>
+			</div>
+		</div>
 	</div>
   </div>
-    <footer class="block textcenter">
-      Footer
-    </footer >
+  <?php
+      include 'footer.php';
+  ?>
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html>
 <head>
@@ -9,22 +12,10 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <?php
+        include 'header.php';
+    ?>
   <div class="divContainer">
-	<header>
-		<div class="textcenter block divRS">
-			<a href="https://twitter.com/CSGO_FR" ><div class="divIconSocial"><img class ="imgRS" src="images/logotwitter100.png" alt="Logo Twitter"></div></a>
-			<a href="https://www.facebook.com/groups/CSGOFRANCE/" ><div class="divIconSocial"><img class ="imgRS" src="images/logofacebook100.png" alt="Logo Facebook"></div></a>
-			<a href="http://steamcommunity.com/gid/103582791437214772" ><div class="divIconSocial"><img class ="imgRS" src="images/logosteam100.png" alt="Logo Steam"></div></a>
-			<a href="https://www.youtube.fr" ><div class="divIconSocial"><img class ="imgRS" src="images/logoyoutube100.png" alt="Logo YouTube"></div></a>
-		</div>
-		<nav class="block textcenter">
-			<a><div><img id="logoNav" src="images/logocsgofr.png" alt="Logo CSGOFR"></div></a>
-			<a class ="navLink" href="index.php"><div class="textNav">Accueil</div></a>
-			<a class ="navLink" href=""><div class="textNav">Serveurs</div></a>
-			<a class ="navLink" href=""><div class="textNav">Connexion</div></a>
-			<a class ="navLink" href="register.php"><div class="textNav">Inscription</div></a>
-        </nav>
-    </header>
     <div id="divStatsGlobales" class="block textcenter">
 		Statistiques Globales
     </div>
@@ -59,101 +50,120 @@
 		 <?php
 			$test="      ";
 		 	$errorMessage = "";
-			if(!empty($_POST['selectTop']) AND !empty($_POST['selectTri'])){
-				try
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=rankme_test;charset=utf8', 'root', '');
-				}
-				catch (Exception $e)
-				{
-					die('Erreur : ' . $e->getMessage());
-				}
-				switch ($_POST['selectTri']){
-					case "":
-						$reponse = $bdd->query('SELECT id, name, steam, score FROM rankme ORDER BY score DESC');
-						while($donnees = $reponse -> fetch()){							
-						echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].' '.$donnees['steam'].' '.$donnees['score'].'</div></a>');							
-							echo('<div class="divSepareSql"></div>');
-						}
-						$reponse->closeCursor();
-						break;
-						
-					case "Score":
-						if (!$_POST['selectTop']=="Tout afficher"){
-							$reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC LIMIT '.$_POST['selectTop']);
-							while($donnees = $reponse -> fetch()){
-								echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].' '.$donnees['score'].'</div></a>');
-								echo('<div class="divSepareSql"></div>');							
-							}
-							$reponse->closeCursor();
-							break;
-						}
-						else{
-							$reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
-							while($donnees = $reponse -> fetch()){
-								echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].' '.$donnees['score'].'</div></a>');
-								echo('<div class="divSepareSql"></div>');							
-							}
-							$reponse->closeCursor();
-							break;							
-						}
-					case "KDR":
-						if (!$_POST['selectTop']=="Tout afficher"){
-							$reponse = $bdd->query('SELECT id, name, kills/deaths AS \'Ratio\' FROM rankme ORDER BY Ratio DESC LIMIT '.$_POST['selectTop']);
-							while($donnees = $reponse -> fetch()){
-								echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name']."   ".$donnees['Ratio'].'</div></a>');
-								echo('<div class="divSepareSql"></div>');								
-							}
-							$reponse->closeCursor();
-							break;
-						}
-						else{
-							$reponse = $bdd->query('SELECT id, name, kills/deaths AS \'Ratio\' FROM rankme ORDER BY Ratio DESC');
-							while($donnees = $reponse -> fetch()){
-								echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name']."   ".$donnees['Ratio'].'</div></a>');
-								echo('<div class="divSepareSql"></div>');								
-							}
-							$reponse->closeCursor();
-							break;							
-						}
-					case "HS":
-						$reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
-						while($donnees = $reponse -> fetch()){
-							echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].'       '.$donnees['score'].'</div></a>');
-							echo('<div class="divSepareSql"></div>');
-						}
-						$reponse->closeCursor();
-						break;
-						
-					case "Hits":
-						$reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
-						while($donnees = $reponse -> fetch()){
-							echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].'       '.$donnees['score'].'</div></a>');
-							echo('<div class="divSepareSql"></div>');							
-						}
-						$reponse->closeCursor();
-						break;	
-						
-					case "PlWeapons":
-						$reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
-						while($donnees = $reponse -> fetch()){
-							echo ('<a class="linkClassement" href="player.php?id='.$donnees['id'].'"><div class="divSql textcenter">'.$donnees['name'].'       '.$donnees['score'].'</div></a>');
-							echo('<div class="divSepareSql"></div>');							
-						}
-						$reponse->closeCursor();
-						break;					
-				}
-			}
-			else
-			{
-				$errorMessage="Veuillez sélectionner un affichage ainsi qu'un tri";
-				echo $errorMessage;
-			}
+             include 'dbconnect.php';
+				if (!empty($_POST['selectTri']) AND !empty($_POST['selectTop'])) {
+                    switch ($_POST['selectTri']) {
+                        case "":
+                            $reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC LIMIT 10');
+                            while ($donnees = $reponse->fetch()) {
+                                echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . ' ' . $donnees['score'] . '</div></a>');
+                                echo('<div class="divSepareSql"></div>');
+                            }
+                            $reponse->closeCursor();
+                            break;
+
+                        case "Score":
+                            if ($_POST['selectTop'] == "Tout afficher") {
+                                $reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
+                                while ($donnees = $reponse->fetch()) {
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . ' ' . $donnees['score'] . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                            } else {
+                                $reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC LIMIT ' . $_POST['selectTop']);
+                                while ($donnees = $reponse->fetch()) {
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . ' ' . $donnees['score'] . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                            }
+                            $reponse->closeCursor();
+                            break;
+
+                        case "KDR":
+                            if ($_POST['selectTop'] == "Tout afficher") {
+                                $reponse = $bdd->query('SELECT id, name, kills/deaths AS "Ratio" FROM rankme ORDER BY Ratio DESC');
+                                while ($donnees = $reponse->fetch()) {
+                                    $ratio_format = number_format($donnees['Ratio'], 1, '.', ' ');
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . "   " . $ratio_format . '</div></a>');
+
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            } else {
+                                $reponse = $bdd->query('SELECT id, name, kills/deaths AS \'Ratio\' FROM rankme ORDER BY Ratio DESC LIMIT ' . $_POST['selectTop']);
+                                while ($donnees = $reponse->fetch()) {
+                                    $ratio_format = number_format($donnees['Ratio'], 1, '.', ' ');
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . "   " . $ratio_format . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            }
+                        case "HS":
+                            if ($_POST['selectTop'] == "Tout afficher") {
+                                $reponse = $bdd->query('SELECT id, name, (headshots/kills)*100 AS "HS" FROM rankme ORDER BY HS DESC');
+                                while ($donnees = $reponse->fetch()) {
+                                    $hs_format = number_format($donnees['HS'], 0, '.', ' ').'%';
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . '       ' . $hs_format.'</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            } else {
+                                $reponse = $bdd->query('SELECT id, name, (headshots/kills)*100 AS "HS" FROM rankme ORDER BY HS DESC LIMIT ' . $_POST['selectTop']);
+                                while ($donnees = $reponse->fetch()) {
+                                    $hs_format = number_format($donnees['HS'], 0, '.', ' ').'%';
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . "   " . $hs_format . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            }
+                        case "Hits":
+                            if ($_POST['selectTop'] == "Tout afficher") {
+                                $reponse = $bdd->query('SELECT id, name, (hits/shots)*100 AS "Précision" FROM rankme ORDER BY Précision DESC');
+                                while ($donnees = $reponse->fetch()) {
+                                    $precision_format = number_format($donnees['Précision'], 1, '.', ' ').'%';
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . '       ' . $precision_format . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            } else {
+                                $reponse = $bdd->query('SELECT id, name, (hits/shots)*100 AS "Précision" FROM rankme ORDER BY Précision DESC LIMIT ' . $_POST['selectTop']);
+                                while ($donnees = $reponse->fetch()) {
+                                    $precision_format = number_format($donnees['Précision'], 1, '.', ' ').'%';
+                                    echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . '       ' . $precision_format . '</div></a>');
+                                    echo('<div class="divSepareSql"></div>');
+                                }
+                                $reponse->closeCursor();
+                                break;
+                            }
+
+                        case "PlWeapons":
+                            $reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC');
+                            while ($donnees = $reponse->fetch()) {
+                                echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . '       ' . $donnees['score'] . '</div></a>');
+                                echo('<div class="divSepareSql"></div>');
+                            }
+                            $reponse->closeCursor();
+                            break;
+                    }
+                }
+                else {
+                    $reponse = $bdd->query('SELECT id, name, score FROM rankme ORDER BY score DESC LIMIT 3');
+                    while ($donnees = $reponse->fetch()) {
+                        echo('<a class="linkClassement" href="player.php?id=' . $donnees['id'] . '"><div class="divSql textcenter">' . $donnees['name'] . ' ' . $donnees['score'] . '</div></a>');
+                        echo('<div class="divSepareSql"></div>');
+                    }
+                    $reponse->closeCursor();
+                }
 		?>
     </div>
   </div>
-    <footer class="block textcenter">
-		Footer
-    </footer >
+    <?php
+        include 'footer.php';
+    ?>
 </body>
 </html>
